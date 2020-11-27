@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Transmitting short-packet over wireless channels—an information-theoretic perspective</title>
+  <title>References | Transmitting short-packet over wireless channels—an information-theoretic perspective</title>
   <meta name="description" content="an information-theoretic perspective on the optimal design of short-packet communication systems" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Transmitting short-packet over wireless channels—an information-theoretic perspective" />
+  <meta property="og:title" content="References | Transmitting short-packet over wireless channels—an information-theoretic perspective" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Transmitting short-packet over wireless channels—an information-theoretic perspective" />
+  <meta name="twitter:title" content="References | Transmitting short-packet over wireless channels—an information-theoretic perspective" />
   
   <meta name="twitter:description" content="an information-theoretic perspective on the optimal design of short-packet communication systems" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="bi-awgn.html"/>
 
-<link rel="next" href="bi-awgn.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -176,35 +176,40 @@ Short packets over wireless channels
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Transmitting short-packet over wireless channels—an information-theoretic perspective</h1>
-<p class="author"><em>Giuseppe Durisi and Alejandro Lancho</em></p>
-<p class="date"><em>2020-11-27</em></p>
-</div>
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<div id="the-need-for-a-nonasymptotic-theory-of-packet-transmission" class="section level2">
-<h2><span class="header-section-number">1.1</span> The need for a nonasymptotic theory of packet transmission</h2>
-<p>One objective of next generation wireless communication systems is to provide mission critical links that can deliver short information packets with high reliability and low latency.
-The availability of such links, which are named ultra-reliable low-latency communications (URLLC) will enable a large range of novel applications such as vehicular communication for autonomous driving and traffic safety, and wireless-powered factory automation.</p>
-<p>So how do we optimally design URLLCs? This is a tricky question, even if we just stop at the physical layer. Are our system models accurate enough to design systems operating at <span class="math inline">\(10^{-6}\)</span> frame error rate?</p>
-<p>But there is an even more fundamental problem. The physical-layer design of current systems relies largely on guidelines provided by information-theory analyses. For example, the well-known formula for the capacity of the AWGN channel</p>
-<p><span class="math display">\[C= W\log_2\biggl(1+ \frac{P}{N_oW}\biggr)\]</span></p>
-<p>tells us that when we have limited bandwidth <span class="math inline">\(W\)</span> at our disposal, doubling the signal-to-noise ratio <span class="math inline">\(P/(N_0 W)\)</span> when <span class="math inline">\(P/(N_0 W)\)</span> is large, results in a capacity increase of merely a single bit per channel use. Significant rate gains must come from other sources than power. Such a consideration has spurred the development of multi-antenna systems, which provide a linear rate gain by exploiting the spatial dimension.</p>
-<p>But to approach capacity, we need to use codes with large blocklength. And large blocklengths often mean large latency. So we cannot use classic performance metric such as ergodic capacity or outage capacity to benchmark the performance of URLLC. Neither we can use these capacity metrics to conduct joint queuing-coding analyses or to design resource allocation and scheduling algorithms.</p>
-<p>So what we can do instead? We must replace asymptotic information-theory results with nonasymptotic finite-blocklength ones!
-Over the last 10 years, the information-theory community has developed many such nonasymptotic results <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>, pp. hayashi09–a]</span>. Some of them, like the so-called normal approximation on the maximum coding rate achievable over an AWGN channel, are now widely used in the URLLC literature.</p>
-<p>These bounds and approximations, although quite general, need to be handled carefully, to avoid applying them outside their range of validity.
-In order to do so, it is important to familiarize oneself with how they are obtained.</p>
-<p>In order to do so, in these notes, we will provide an accessible introduction to some of the key results in finite-blocklength information theory, and discuss how they can be used to optimally design URLLC.</p>
-<p>We will start from a simple binary-input AWGN model (see Chapter <a href="bi-awgn.html#bi-awgn">2</a>), and then move to more sophisticated models including, e.g., fading and channel-estimation overhead, multiple antennas, repetition protocols, and joint queuing-coding analyses.</p>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
 
-</div>
-</div>
-<h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-polyanskiy10-05a">
+<div>
 <p>[1] Y. Polyanskiy, H. V. Poor, and S. Verdú, “Channel coding rate in the finite blocklength regime,” <em>IEEE Trans. Inf. Theory</em>, vol. 56, no. 5, pp. 2307–2359, May 2010.</p>
+</div>
+<div>
+<p>[2] C. E. Shannon, “A mathematical theory of communication,” <em>Bell Syst. Tech. J.</em>, vol. 27, pp. 379–423 and 623–656, 1948.</p>
+</div>
+<div>
+<p>[3] W. Yang, A. Collins, G. Durisi, Y. Polyanskiy, and H. V. Poor, “Beta-beta bounds: Finite-blocklength analog of the golden formula,” <em>IEEE Trans. Inf. Theory</em>, vol. 64, no. 9, pp. 6236–6256, Sep. 2018.</p>
+</div>
+<div>
+<p>[4] A. Martinez and A. Guillén i Fàbregas, “Saddlepoint approximation of random–coding bounds.” San Diego, CA, U.S.A., Feb. 2011.</p>
+</div>
+<div>
+<p>[5] R. G. Gallager, <em>Information theory and reliable communication</em>. New York, NY, U.S.A.: Wiley, 1968.</p>
+</div>
+<div>
+<p>[6] J. Font-Segura, G. Vazquez-Vilar, A. Martinez, A. Guillén i Fàbregas, and A. Lancho, “Saddlepoint approximations of lower and upper bounds to the error probability in channel coding.” Princeton, NJ, Mar. 2018.</p>
+</div>
+<div>
+<p>[7] Y. Polyanskiy and Y. Wu, <em>Lecture notes on information theory</em>. 2019.</p>
+</div>
+<div>
+<p>[8] S. Verdú and T. S. Han, “A general formula for channel capacity,” <em>IEEE Trans. Inf. Theory</em>, vol. 40, no. 4, pp. 1147–1157, Jul. 1994.</p>
+</div>
+<div>
+<p>[9] W. Feller, <em>An introduction to probability theory and its applications</em>, vol. II. New York, NY, USA: Wiley, 1971.</p>
+</div>
+<div>
+<p>[10] M. C. Coşkun <em>et al.</em>, “Efficient error-correcting codes in the short blocklength regime,” <em>Physical Communication</em>, Mar. 2019.</p>
+</div>
 </div>
 </div>
             </section>
@@ -212,8 +217,8 @@ In order to do so, it is important to familiarize oneself with how they are obta
           </div>
         </div>
       </div>
+<a href="bi-awgn.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="bi-awgn.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

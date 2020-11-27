@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 A gentle introduction: the binary AWGN channel | Short-packet transmission over fading channels—an information-theoretic perspective</title>
+  <meta name="description" content="an information-theoretic perspective on the optimal design of short-packet communication systems" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 A gentle introduction: the binary AWGN channel | Short-packet transmission over fading channels—an information-theoretic perspective" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="an information-theoretic perspective on the optimal design of short-packet communication systems" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 A gentle introduction: the binary AWGN channel | Short-packet transmission over fading channels—an information-theoretic perspective" />
+  
+  <meta name="twitter:description" content="an information-theoretic perspective on the optimal design of short-packet communication systems" />
+  
+
+<meta name="author" content="Giuseppe Durisi" />
+
+
+<meta name="date" content="2020-07-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+Short-packets
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> State of the project</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#done"><i class="fa fa-check"></i><b>1.1</b> done</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#to-do-next"><i class="fa fa-check"></i><b>1.2</b> to do next</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#some-useful-r-markdown-commands"><i class="fa fa-check"></i><b>1.3</b> Some useful r-markdown commands</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> A gentle introduction: the binary AWGN channel</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#the-need-for-a-nonasymptotic-theory-of-packet-transmission"><i class="fa fa-check"></i><b>2.1</b> The need for a nonasymptotic theory of packet transmission</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#the-binary-input-awgn-channel"><i class="fa fa-check"></i><b>2.2</b> The binary-input AWGN channel</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#an-achievability-bound"><i class="fa fa-check"></i><b>2.3</b> An achievability bound</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="intro.html"><a href="intro.html#the-random-coding-union-bound-with-parameter-s"><i class="fa fa-check"></i><b>2.3.1</b> The random-coding union bound with parameter s</a></li>
+<li class="chapter" data-level="2.3.2" data-path="intro.html"><a href="intro.html#evaluation-of-the-rcus-for-the-bi-awgn-channel"><i class="fa fa-check"></i><b>2.3.2</b> Evaluation of the RCUs for the bi-AWGN channel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#a-converse-bound"><i class="fa fa-check"></i><b>2.4</b> A converse bound</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Short-packet transmission over fading channels—an information-theoretic perspective</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> A gentle introduction: the binary AWGN channel</h1>
+<div id="the-need-for-a-nonasymptotic-theory-of-packet-transmission" class="section level2">
+<h2><span class="header-section-number">2.1</span> The need for a nonasymptotic theory of packet transmission</h2>
+<p>One objective of next generation wireless communication systems is to provide mission critical links that can deliver short information packets with high reliability and low latency.
+The availability of such links, which are named ultra-reliable low-latency communications (URLLC) will enable a large range of novel applications such as vehicular communication for autonomous driving and traffic safety, and wireless-powered factory automation.</p>
+<p>So how do we optimally design URLLCs? This is a tricky question, even if we just stop at the physical layer. Are our system models accurate enough to design systems operating at <span class="math inline">\(10^{-6}\)</span> frame error rate?</p>
+<p>But there is an even more fundamental problem. The physical-layer design of current systems relies largely on guidelines provided by information-theory analyses. For example, the well-known formula for the capacity of the AWGN channel</p>
+<p><span class="math display">\[C= W\log_2\biggl(1+ \frac{P}{N_oW}\biggr)\]</span></p>
+<p>tells us that when we have limited bandwidth <span class="math inline">\(W\)</span> at our disposal, doubling the transmit power <span class="math inline">\(P\)</span> when <span class="math inline">\(P\)</span> is large, results in a capacity increase of merely a single bit per channel use. Significant rate gains must come from other sources than power. Such a consideration has spurred the development of multi-antenna systems, which provide a linear rate gain by exploiting the spatial dimension.</p>
+<p>But to approach capacity, we need to use codes with large blocklength. And large blocklengths often mean large latency. So we cannot use classic performance metric such as ergodic capacity or outage capacity to benchmark the performance of URLLC. Neither we can use these capacity metrics to conduct joint queuing-coding analyses or to design resource allocation and scheduling algorithms.</p>
+<p>So what we can do instead? We must replace asymptotic information-theory results with nonasymptotic finite-blocklength ones!
+Over the last 10 years, the information-theory community has developed many such nonasymptotic results <span class="citation">(Polyanskiy, Poor, and Verdú <a href="#ref-polyanskiy10-05a" role="doc-biblioref">2010</a>)</span>. Some of them, like the so-called normal approximation on the maximum coding rate achievable over an AWGN channel, are now widely used in the URLLC literature.</p>
+<p>In a series of posts on this blog, I will provide an accessible introduction to some of the key results in finite-blocklength information theory, and discuss how they can be used to optimally design URLLC.</p>
+<p>I will start from a simple binary-input AWGN model, and then move to more sophisticated models including, e.g., fading and channel-estimation overhead, multiple antennas, HARQ, and queuing delays.</p>
+</div>
+<div id="the-binary-input-awgn-channel" class="section level2">
+<h2><span class="header-section-number">2.2</span> The binary-input AWGN channel</h2>
+<p>We will start our tour through finite-blocklength information theory by analyzing one of the simplest, yet practically relevant, point-to-point communication channel: the discrete-time binary-input AWGN channel.
+The input-output relation of such a channel is
+<span class="math display" id="eq:io">\[\begin{equation}
+y_j=\sqrt{\rho}x_j + w_j, \quad j=1,\dots, n \tag{2.1}
+\end{equation}\]</span>
+Here, <span class="math inline">\(x_k\)</span> is the channel input, which we assume to belong to the set <span class="math inline">\(\{-1,1\}\)</span> whereas <span class="math inline">\(\{w_j\}\)</span> is the discrete-time AWGN process. We assume it to be stationary memoryless and that each of its samples has zero mean and unit variance. Hence, <span class="math inline">\(\rho\)</span> can be interpreted as the signal-to-noise ratio (SNR). Throughout, we shall assume that, to transmit an information message, i.e., a set of <span class="math inline">\(k\)</span> information bits, we are allowed to use the bi-AWGN channel <span class="math inline">\(n\)</span> times.</p>
+<p>Note that <span class="math inline">\(n\)</span> is closely related to the communication latency. Indeed, assume that to carry each binary symbol <span class="math inline">\(x_k\)</span> we use a continuous-time signal of bandwidth <span class="math inline">\(W\)</span> Hz. Then using the channel <span class="math inline">\(n\)</span> times to transmit our message of <span class="math inline">\(k\)</span> bits entails a delay of <span class="math inline">\(n/W\)</span> seconds. The actual overall delay may be larger if we also include queuing, propagation, and decoding delays. But in a first approximation, we will neglect these additional sources of delay and take <span class="math inline">\(n\)</span> as a proxy for latency. This is not a bad assumption for short-distance communications. In 4G for example, the smallest packet size has a duration of 0.5 milliseconds, whereas the propagation delay to cover a distance of 180 meters is just 30 microseconds.</p>
+<p>So if we are interested in low latency, we should choose <span class="math inline">\(n\)</span> as small as possible. But there is a tradeoff between latency and reliability. Indeed, it is intuitively clear that the larger the number of channel uses <span class="math inline">\(n\)</span> we are allowed to occupy for the transmissions of our <span class="math inline">\(k\)</span> bits is, the more reliable the transmission will be. Let us then denote by <span class="math inline">\(\epsilon\)</span> the error probability. We are interested in the following question.</p>
+<hr />
+<p><strong>Fundamental question</strong>:<br />
+What is the smaller <span class="math inline">\(n\)</span> for which the <span class="math inline">\(k\)</span> information bits can be decoded correctly with probability <span class="math inline">\(1-\epsilon\)</span> or larger?</p>
+<hr />
+<p>Equivalently, we may try to find the largest number of bits <span class="math inline">\(k\)</span> that we can transmit with reliability <span class="math inline">\(1-\epsilon\)</span> or larger uing the channel <span class="math inline">\(n\)</span> times, or the smallest probability of error <span class="math inline">\(\epsilon\)</span> that can be achieved for given <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>.</p>
+<p>What we will do next is to introduce some notation that will help us characterizing these quantities, and also illustrate why standard asymptotic information theory does not provide satisfactory answers.</p>
+<p>How do we transmit the <span class="math inline">\(k\)</span> information bits using <span class="math inline">\(n\)</span> channel uses and how do we recover the <span class="math inline">\(k\)</span> bits from the <span class="math inline">\(n\)</span> received samples <span class="math inline">\(y^n=\{y_1,\dots,y_n\}\)</span>? We use a channel code, i.e., an encoder that maps the <span class="math inline">\(k\)</span> bits into the <span class="math inline">\(n\)</span> channel uses, and a decoder that provides an estimate of the <span class="math inline">\(k\)</span> information bits from <span class="math inline">\(y^n\)</span>.</p>
+<p>Here is a more formal definition:</p>
+<!--TODO: Could include a figure of the enc-dec-->
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-1" class="definition"><strong>Definition 2.1  </strong></span>A <span class="math inline">\((k,n,\epsilon)\)</span>-code for the bi-AWGN channel with a given SNR <span class="math inline">\(\rho\)</span> consists of</p>
+<ul>
+<li><ol style="list-style-type: lower-roman">
+<li>an encoder <span class="math inline">\(f:\{1,2,\dots, 2^k\}\mapsto \{-1,1\}^n\)</span> that maps the information message <span class="math inline">\(j \in \{1,2,\dots, 2^k\}\)</span> into <span class="math inline">\(n\)</span> BPSK symbols.
+We will refer to the set of all <span class="math inline">\(n\)</span>-dimensional strings produced by the encoder as <em>codebook</em>. Furthermore, we will call each of the string a <em>codewords</em> and <span class="math inline">\(n\)</span> the blocklength.</li>
+</ol></li>
+<li><ol start="2" style="list-style-type: lower-roman">
+<li>A decoder <span class="math inline">\(g:\mathbb{R}^n\mapsto \{1,2,\dots, 2^k\}\)</span> that maps the received sequence <span class="math inline">\(y^n \in \mathbb{R}^n\)</span> into a message <span class="math inline">\(\widehat{\jmath}\in \{1,2,\dots, 2^k\}\)</span>, or, possibly, it declares an error.
+This decoder satisfies the error-probability constraint
+<span class="math inline">\(\mathrm{Pr}\bigl\{\widehat{\jmath}\neq j\bigr\}\leq \epsilon\)</span>
+</div></li>
+</ol></li>
+</ul>
+<p>Note that <span class="math inline">\(\epsilon\)</span> should be interpreted as a packet/frame error probability and not as a bit error probability. Indeed, a difference in a single bit between the binary representation of <span class="math inline">\(\jmath\)</span> and <span class="math inline">\(\widehat{\jmath}\)</span> causes an error, according to our definition.</p>
+<p>In a nutshell, finite-blocklength information theory allows us to find, for a given SNR, the triplets <span class="math inline">\((k,n,\epsilon)\)</span> for which a
+<span class="math inline">\((k,n,\epsilon)\)</span>-code can be found and the triplets <span class="math inline">\((k,n,\epsilon)\)</span> for which no code exists.</p>
+<p>Note that doing so is not trivial, since an exhaustive search among all codes is hopeless.
+Indeed, even if we fix the decoding rule to, for example, maximum likelihood, for a given choice of <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, one would need to go through <span class="math inline">\(\binom{2^n}{2^k}\)</span> codes.</p>
+<p>Before exploring how and in which sense a characterization of the triplets <span class="math inline">\((k,n,\epsilon)\)</span> can be performed, let us first see what we can do by using the notion of channel capacity introduced by <span class="citation">Shannon (<a href="#ref-shannon48-07a" role="doc-biblioref">1948</a>)</span> in his groundbreaking paper.</p>
+<p>Let us denote by <span class="math inline">\(k^\star(n,\epsilon)\)</span> the largest number of bits we can transmit using <span class="math inline">\(n\)</span> channel uses with error probability not exceeding <span class="math inline">\(\epsilon\)</span> and by <span class="math inline">\(R^\star(n,\epsilon)=k^\star(n,\epsilon)/n\)</span> the corresponding maximum coding rate, measured in bits per channel use.</p>
+<p>Also for a given rate <span class="math inline">\(R=k/n\)</span>, let us denote by <span class="math inline">\(\epsilon^\star(n,R)\)</span> the smallest error probability achievable using <span class="math inline">\(n\)</span> channel uses and a code of rate <span class="math inline">\(R\)</span>.</p>
+<p>Since we cannot go through all codes, none of these quantities can be actually computed for the parameter values that are of interest in typical wireless communication scenarios.
+Actually, even for a given randomly picked code, evaluating the error probability under maximum likelihood decoding (i.e., the one corresponding to the optimal decoder), is in general unfeasible
+Shannon’s capacity provides an asymptotic characterization of these quantities.</p>
+<p>Specifically, Shannon’s capacity <span class="math inline">\(C\)</span> is the largest communication rate at which we can transfer information messages over the channel <a href="intro.html#eq:io">(2.1)</a> with arbitrarily small error probability for sufficiently large blocklength.</p>
+<p>Mathematically,</p>
+<p><span class="math display">\[\begin{equation}
+	C=\lim_{\epsilon \to 0} \lim_{n\to \infty} R^\star(n,\epsilon).
+\end{equation}\]</span></p>
+<p>Some remarks about this formula are in order:</p>
+<ul>
+<li><p>One should in general worry about the existence of the limits in the definition of capacity that I have just provided. They do exist for the memoryless channel under analysis here.</p></li>
+<li><p>It is important to take the limits in this precise order. If we were to invert the order of the limits, we would get <span class="math inline">\(C=0\)</span> for the bi-AWGN channel <a href="intro.html#eq:io">(2.1)</a>—a not very insightful result.</p></li>
+<li><p>For the channel in <a href="intro.html#eq:io">(2.1)</a> (and for many other channels of interest in wireless communications), the first limit <span class="math inline">\(\epsilon\to 0\)</span> is actually superfluous. We get the same result for every <span class="math inline">\(\epsilon\)</span> in the interval <span class="math inline">\((0,1)\)</span> as a consequence of the so-called strong converse theorem.
+We will show later in this set of notes why this is indeed the case and for which channels this property does not hold.</p></li>
+</ul>
+<p>One way to explain the relation between capacity and finite-blocklength metrics is through the following figure, which artistically illustrates <span class="math inline">\(\epsilon^\star(n,R)\)</span> as a function for <span class="math inline">\(R\)</span> for various values of <span class="math inline">\(n\)</span>.</p>
+<div class="figure"><span id="fig:fblintro"></span>
+<img src="images/fbl_intro/fbl_intro.png" alt="Error probability as a function of the rate" width="50%" />
+<p class="caption">
+Figure 2.1: Error probability as a function of the rate
+</p>
+</div>
+<p>Although we do not know how to compute <span class="math inline">\(\epsilon^\star(n,R)\)</span>, Shannon was able to show that this function converges to a step function centered at <span class="math inline">\(C\)</span> in the limit <span class="math inline">\(n\to\infty\)</span>. When <span class="math inline">\(R&lt;C\)</span>, one can achieve arbitrarily low <span class="math inline">\(\epsilon\)</span> by choosing <span class="math inline">\(n\)</span> sufficiently large. If however <span class="math inline">\(R&gt;C\)</span> the packet error probability goes to <span class="math inline">\(1\)</span> as we increase <span class="math inline">\(n\)</span>.</p>
+<p>We know from Shannon’s channel coding theorem that, for stationary memoryless channels like the binary input AWGN channel , the channel capacity <span class="math inline">\(C\)</span> is</p>
+<p><span class="math display" id="eq:capacity">\[\begin{equation}
+ C=\max_{P_X} I(X;Y) \tag{2.2}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(P_X\)</span> denotes the probability distribution on the input <span class="math inline">\(X\)</span> and <span class="math inline">\(I(X;Y)\)</span> is the mutual information</p>
+<p><span class="math display" id="eq:mi">\[\begin{equation}
+    I(X;Y)= \mathbb{E}\left[\log\frac{P_{Y|X}(Y|X)}{P_Y(Y)}\right].
+    \tag{2.3}
+\end{equation}\]</span></p>
+<p>Here, the expectation is with respect to the joint distribution of <span class="math inline">\((X,Y)\)</span>. Furthermore, <span class="math inline">\(P_{Y|X}\)</span> denotes the channel law</p>
+<p><span class="math display">\[ P_{Y | X} (y |x)=\frac{1}{\sqrt{2\pi}}\exp\left(- \frac{(y-\sqrt{\rho}x)^2}{2} \right) \]</span></p>
+<p>and <span class="math inline">\(P_Y\)</span> is the distribution on the channel output <span class="math inline">\(Y\)</span> induced by <span class="math inline">\(P_X\)</span> through <span class="math inline">\(P_{Y| X}\)</span>.
+Specifically, <span class="math inline">\(P_Y(y)=\mathrm{E}\left[P_{Y\|X}(y|\bar{X})\right]\)</span> where <span class="math inline">\(\bar{X}\sim P_X\)</span> and independent of <span class="math inline">\(X\)</span>.</p>
+<p>A remark on notation is in order. It will be convenient from now on to distinguish between deterministic and random quantities. I will use uppercase letter such as <span class="math inline">\(X\)</span> to denote random quantities , and lowercase letters such as <span class="math inline">\(x\)</span> to denote their realizations.</p>
+<p>It will also be convenient to give a name to the log-likelihood ratio in the argument of the expectation that defines mutual information in @ref(eq:mutual_info).
+It is usually called <em>information density</em> and denoted by <span class="math inline">\(\imath(x;y)\)</span>.
+Hence, <span class="math inline">\(I(X;Y)=\mathrm{E}[\imath(X;Y)]\)</span>.</p>
+<p>For the binary-input AWGN channel, one can show that the uniform distribution over <span class="math inline">\(\{-1,1\}\)</span> achieves the maximum in <a href="intro.html#eq:capacity">(2.2)</a>.
+The induced output distribution <span class="math inline">\(P_Y\)</span> is a Gaussian mixture <span class="math display">\[P_Y= \frac{1}{2}\mathcal{N}(-\sqrt{\rho},1)+\frac{1}{2}\mathcal{N}(\sqrt{\rho},1)\]</span> and the information density can be readily computed as</p>
+<p><span class="math display">\[ \imath(x;y) = \log 2 - \log\left(1+ \exp(-2xy\sqrt{\rho})\right).\]</span></p>
+<p>Finally, the channel capacity <span class="math inline">\(C\)</span> is given by</p>
+<p><span class="math display">\[\begin{equation}
+  C=\frac{1}{\sqrt{2\pi}}\int e^{-z^2/2} \Bigl(\log(2)-\log\bigl(1+e^{-2\rho-2z\sqrt{\rho}}\bigr) \Bigr)\,
+  \mathrm{d}z.
+\end{equation}\]</span></p>
+<p>Computing capacity takes only few lines of matlab code</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb1-1"><a href="intro.html#cb1-1"></a>f = @(z) exp(-z.^<span class="fl">2</span>/<span class="fl">2</span>)/sqrt(<span class="fl">2</span>*pi) .* (log2(<span class="fl">2</span>) - log2(<span class="fl">1</span>+exp(-<span class="fl">2</span>*rho-<span class="fl">2</span>*sqrt(rho)*z)));</span>
+<span id="cb1-2"><a href="intro.html#cb1-2"></a>Zmin = -<span class="fl">9</span>; Zmax = <span class="fl">9</span>;</span>
+<span id="cb1-3"><a href="intro.html#cb1-3"></a>C = quadl(f, Zmin, Zmax);</span></code></pre></div>
+<p>This code is part of the routine <code>biawgn_stats.m</code> available as part of the <a href="https://github.com/yp-mit/spectre">SPECTRE</a> toolbox. I will talk about this toolbox in later chapters; nevertheless, it may be good to have a look at it already now.</p>
+<p>To summarize, the capacity of the bi-AWGN is relatively easy to compute, but gives us only the following asymptotic answer to the question about which triplets <span class="math inline">\((k,n,\epsilon)\)</span> are achievable:</p>
+<hr />
+<p><strong>Asymptotic wisdom</strong>: All triplets <span class="math inline">\((nR,n,\epsilon)\)</span> are achievable for sufficiently large <span class="math inline">\(n\)</span>, provided that <span class="math inline">\(R&lt;C\)</span>.</p>
+<hr />
+<p>Although asymptotic, the characterization of the achievable triplets provided by Shannon’s capacity has turned out to be very important! Not only it provides a benchmark against which to compare the performance of actual codes.
+It also provides a useful abstraction of the physical layer, which can be used for the design of higher-layer protocols, such as resource allocation and user scheduling algorithms.</p>
+<p>Unfortunately, the asymptotic answer provided by Shannon’s capacity turns out to be loose when the blocklength <span class="math inline">\(n\)</span> is small.
+As we shall see, finite-blocklength information theory will give us a much more precise characterization.</p>
+<p>Let us go back to the tradeoff between <span class="math inline">\(\epsilon\)</span> and <span class="math inline">\(R\)</span> depicted artistically in Fig. <a href="intro.html#fig:fblintro">2.1</a>.
+In Fig. <a href="intro.html#fig:fblawgnevr">2.2</a> below, I show how finite-blocklength information theory can be used to provide a quantitative characterization of this trade-off for a fixed blocklength <span class="math inline">\(n\)</span>.</p>
+<div class="figure"><span id="fig:fblawgnevr"></span>
+<img src="images/eps_vs_rate/eps_vs_rate.png" alt="Finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the rate $R$ for different values of the blocklength $n$" width="70%" />
+<p class="caption">
+Figure 2.2: Finite-blocklength upper and lower bounds on <span class="math inline">\(\epsilon^*(n,R)\)</span> as a function of the rate <span class="math inline">\(R\)</span> for different values of the blocklength <span class="math inline">\(n\)</span>
+</p>
+</div>
+<p>I have assumed <span class="math inline">\(\rho=0.189\)</span> dB. For this value of SNR, the Shannon capacity is equal to <span class="math inline">\(0.5\)</span> bits per channel use.
+As shown by the dashed vertical red line in the figure, this implies that for all rates below <span class="math inline">\(0.5\)</span> bits per channel use an arbitrary low error probability can be achieved by letting the blocklength <span class="math inline">\(n\to\infty\)</span>.
+The other curves in the figure illustrate <span style="color:blue">upper (achievability) bounds</span> in blue and <span style="color:red">lower (converse) bounds</span> on the error probability <span class="math inline">\(\epsilon^*(n,R)\)</span> for different values of the blocklength <span class="math inline">\(n\)</span>.
+The converse bounds give us an impossibility result: for a given blocklength, no code with parameters <span class="math inline">\(R,\epsilon(R,n)\)</span> that lie below the red curve can be found.
+The achievability result instead demonstrates the existence of codes with parameters <span class="math inline">\(R,\epsilon(R,n)\)</span> above the blue curve (although, as we shall discuss, it does not indicate how to construct them explicitly).
+Between the two curves lies a region for which we cannot prove or disprove the existence of a code.</p>
+<p>If for example we want codes operating at an error probability of <span class="math inline">\(\epsilon=10^{-8}\)</span>, Fig. <a href="intro.html#fig:fblawgnevr">2.2</a> tells us that for a blocklength of <span class="math inline">\(128\)</span> channel uses, we should use a code of rate below <span class="math inline">\(0.19\)</span> bits/channel use.
+However, if we can afford a blocklength of <span class="math inline">\(512\)</span> channel uses, codes with rate as large as <span class="math inline">\(0.31\)</span> bits per channel uses can be found.
+Both values are significantly smaller than the <span class="math inline">\(0.5\)</span> bits per channel use promised by the Shannon capacity.</p>
+<p><span style="color:red"><strong>UP TO HERE</strong></span></p>
+<p><strong><span style="color: red">TODO</span></strong>: insert preview from presentation</p>
+<!--The following numerical example gives a flavor of the results we will derive in the next posts. Fix $\rho=0$ dB. For this SNR value, the capacity of the bi-AWGN channel is about $0.486$ bit/channel use.
+In the figure below, I plotted two bounds and an approximation on $R^\star(k,n)$ as a function of the blocklength $n$, for the case $\epsilon=10^{-4}$, obtained through finite-blocklength information theory.
+
+
+<div class="figure">
+<img src="images/biawgn_fig.png" alt="Coding rate as a function of the blocklength for bi-AWGN channel" width="50%" />
+<p class="caption">(\#fig:unnamed-chunk-2)Coding rate as a function of the blocklength for bi-AWGN channel</p>
+</div>
+
+The converse bound (red curve) tells us that there is no code with parameters $(R,n)$ lying above the red curve and error probability no larger than $10^{-4}$.
+The achievability
+
+
+One can see that the bounds and the approximation allow one to identify accurately, for a fixed $\epsilon$, the pairs $(k,n)$ that are achievable. 
+Such a precise characterization is indispensable for an optimum design of URLLC.
+
+-->
+</div>
+<div id="an-achievability-bound" class="section level2">
+<h2><span class="header-section-number">2.3</span> An achievability bound</h2>
+<p>In the last post, I gave a teaser on how finite-blocklength information theory can help us identifying the triplets <span class="math inline">\((k,n,\epsilon)\)</span> for which a <span class="math inline">\((k,n,\epsilon)\)</span> code can be found.
+Let us illustrate this with the following figure:</p>
+<div class="figure">
+<img src="/images/biawgn_fig_possible.png" alt="" />
+<p class="caption">Feasible and not feasible (k,n) pairs</p>
+</div>
+<p>This is essentially the same figure I showed in <a href="/posts/fbl-tutorial-2/">part 2</a>, but now I have put information bits rather rate on the y-axis.
+The figure illustrates achievability and converse bounds on <span class="math inline">\(k^\star(n,\epsilon)\)</span> as a function of <span class="math inline">\(n\)</span> for <span class="math inline">\(\epsilon=10^{-4}\)</span> and <span class="math inline">\(\rho=0\)</span> dB (here, <span class="math inline">\(\rho\)</span> is the SNR associated to the reception of our BPSK symbols).</p>
+<p>I also plotted in magenta the curve <span class="math inline">\(k^\star(n,\epsilon)=C n\)</span> with <span class="math inline">\(C\)</span> standing for channel capacity, which comes from an asymptotic capacity analysis. Please note that this curve is just an approximation that is valid only in the asymptotic limit <span class="math inline">\(n\rightarrow \infty\)</span>.</p>
+<p>The figure tells us that all <span class="math inline">\((k,n)\)</span> pairs that lie above the converse (red) curve are not feasible, whereas the <span class="math inline">\((k,n)\)</span> pairs that lie below the blue (achievability) curve are feasible. We cannot say anything about the pairs between the two curves. This is a consequence of the fact that we cannot determine <span class="math inline">\(k^*(n,\epsilon)\)</span> exactly because, as discussed in the previous post, finding it involves an exhaustive search over a number of codes that grow double-exponentially in <span class="math inline">\(n\)</span> for a fixed rate.
+Luckily, our bounds are tight and the region of <span class="math inline">\((k,n)\)</span> pairs we cannot characterize is small.</p>
+<p>Note also how more accurate the classification enabled by FBL-IT is compared to the one based on capacity.</p>
+<p>In the remainder of this post, I will explain how to evaluate the achievability (blue) curve shown in the figure. I’ll discuss the converse bound in the next post.</p>
+<div id="the-random-coding-union-bound-with-parameter-s" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> The random-coding union bound with parameter s</h3>
+<p>Achievability bounds in finite-blocklength information theory give us a lower bound on <span class="math inline">\(k^\star(n,\epsilon)\)</span>, and, hence on <span class="math inline">\(R^\star(k,n)\)</span>, or, equivalently, an upper bound on <span class="math inline">\(\epsilon^*(k,n)\)</span> for a given SNR value.</p>
+<p>Many such bounds are available in the literature: some are based on threshold decoding, such as the dependence-testing bound. Some are based on hypothesis testing such as the <span class="math inline">\(\kappa\beta\)</span> and the <span class="math inline">\(\beta\beta\)</span> bounds.
+Here, I will review a variation of the random-coding union (RCU) bound [^1], called RCU bound with parameter <span class="math inline">\(s\)</span> (RCUs) [^2].
+This bound, which gives the achievability curve showed in blue in the plot, is appealing because</p>
+<ul>
+<li>it is tight both in the normal and in the error-exponent regimes (I will review what this mean in a later post)</li>
+<li>it is reasonably easy to evaluate numerically</li>
+<li>it lends itself to an easy generalization to arbitrary, mismatch decoding rules. This allows for its applications in many setups of practical relevance, including when one uses pilot symbols to estimate the channel in a fading environment, and nearest-neighbor detection based on the estimated CSI at the receiver.</li>
+</ul>
+<p>Like most achievability bounds in information theory, the RCUs bound relies on <em>random coding</em>. What does this mean? The goal is, for fixed <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, to produce a code whose probability of error can be upper-bounded by a function of <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span> that is reasonably easy to compute. The proof methodology is, however, not constructive in that it does not give us an actual code.</p>
+<p>Indeed, rather than analyzing the performance of a given code, we analyze the average performance of a random ensemble of codes, whose codewords are drawn independently from a given input distribution. Then, we show that the average error probability, averaged over this ensemble is upper-bound by a suitable, easy-to-evaluate function of <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>. Finally, we conclude that there must exist at least a code in the ensemble whose error probability is upper-bounded by that function.</p>
+<p>I will state for future uses the RCUs bound in a more general setup than the bi-AWGN channel. Let us denote by <span class="math inline">\(P_{Y^n | X^n}\)</span> a general channel law that characterizes the input-output relation of blocks of <span class="math inline">\(n\)</span> symbols of a generic channel.
+For example, in the bi-AWGN case, we have</p>
+<p><span class="math display">\[P_{Y^n | X^n}(y^n | x^n)=\prod_{j=1}^{n} P_{Y | X}(y_j | x_j)\]</span></p>
+<p>where</p>
+<p><span class="math display">\[ P_{Y | X} (y |x)=\frac{1}{\sqrt{2\pi}}\exp\left(- \frac{(y-\sqrt{\rho}x)^2}{2} \right) \]</span></p>
+<p>We are now ready to state the RCUs bound.</p>
+<p>Fix an <span class="math inline">\(s&gt;0\)</span> and an input distribution <span class="math inline">\(P_{X^n}\)</span>. Then for every <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, there exists a <span class="math inline">\((k,n,\epsilon)\)</span>-code whose error probability is upper-bounded as
+{: .notice–success}
+<span class="math display">\[ \epsilon \leq \mathbb{E}\left[ \exp\left[-\max\left\{0, \imath_s(X^n,Y^n)-(2^k-1) \right\} \right] \right]. \]</span>
+{: .notice–success}
+Here, <span class="math inline">\((X^n,Y^n)\)</span> is distributed as <span class="math inline">\(P_{X^n}P_{Y^n | X^n}\)</span> and <span class="math inline">\(\imath_s(x^n,y^n)\)</span> is the generalized information density, which is defined as
+<span class="math display">\[ \imath_s(x^n,y^n)=\log \frac{P^s_{Y^n | X^n} (y^n | x^n)}{\mathbb{E}\left[P^s_{Y^n | X^n}(y^n | \bar{X}^n)\right]}\]</span>
+with <span class="math inline">\(\bar{X}^n\)</span> distributed as <span class="math inline">\(P_{X^n}\)</span> and independent of <span class="math inline">\(X^n\)</span>.
+{: .notice–success}</p>
+<p>I will next provide a proof for this bound. Implementation details, including a matlab script are given at the end of the post.</p>
+<p>Let <span class="math inline">\(M=2^k\)</span> be the number of messages associated with the <span class="math inline">\(k\)</span> information bits. We assign to each message an <span class="math inline">\(n\)</span>-dimensional codeword <span class="math inline">\(C_j\)</span>, <span class="math inline">\(j=1\dots,M\)</span> generated independently from <span class="math inline">\(P_{X^n}\)</span>.
+We shall analyze the average error probability under maximum-likelihood decoding, averaged with respect to all possible codewords generated in this way. The reader familiar with the derivation of Gallager’s random coding error exponent [^3] will recognize most of the following steps.
+For a given realization <span class="math inline">\(c_1,\dots,c_M\)</span> of our random codebook, the error probability can be upper-bounded as</p>
+<p><span class="math display">\[\epsilon(c_1,\dots,c_M) \leq \frac{1}{M} \sum_{j=1}^M \mathrm{Pr}\left[ \bigcup_{t=1, t\neq j}^M \left\{ P_{Y^n | X^{n}}(Y^n | c_t)\geq P_{Y^n | X^{n}}(Y^n | c_j)  \right\} \right]. \]</span></p>
+<p>In words, under maximum-likelihood decoding, an error occurs whenever the transmitted codeword has a smaller likelihood than one of the other codewords. The inequality here comes from the fact that we assumed that all ties produce errors, which is pessimistic.
+We now average over all codebooks. Since all codewords are identically distributed, we can assume without loss of generality that the transmitted codeword is the first one. Hence,</p>
+<p><span class="math display">\[\mathbb{E}\left[\epsilon(C_1,\dots,C_M)\right]\leq \mathrm{Pr}\left[ \bigcup_{t=2}^M  \left\{ P_{Y^n | X^{n}}(Y^n | C_t)\geq P_{Y^n | X^{n}}(Y^n | C_1)  \right\} \right]. \]</span></p>
+<p>The plan now is to replace the union by a sum by means of the union bound. However, to avoid the resulting bound to be too loose, we operate as follows. We first condition on <span class="math inline">\(C_1\)</span> and <span class="math inline">\(Y^n\)</span>. Then we apply the union bound on <span class="math inline">\(C_2,\dots,C_M\)</span>, and finally we average on <span class="math inline">\(C_1\)</span> and <span class="math inline">\(Y^n\)</span>. These steps yield</p>
+<p><span class="math display">\[\mathbb{E}\left[\epsilon(C_1,\dots,C_M)\right]\leq \mathbb{E}_{C_1,Y^n}\left[\min\left\{1,\sum_{t=2}^M\mathrm{Pr}\left[    P_{Y^n | X^{n}}(Y^n | C_t)\geq P_{Y^n | X^{n}}(Y^n | C_1) | C_1,Y^n  \right]\right\}\right]. \]</span></p>
+<p>Here, the <span class="math inline">\(\min\)</span> tighten our results by ensuring that our upper bound on the probability term does not exceed <span class="math inline">\(1\)</span>.
+Now, since all codewords <span class="math inline">\(C_2,\dots,C_M\)</span> are identically distributed, the <span class="math inline">\((M-1)\)</span> probability terms are identical. Let us denote by <span class="math inline">\(X^n\)</span> the transmitted codeword and by <span class="math inline">\(\bar{X^n}\)</span> one of the other codewords:</p>
+<p><span class="math display">\[P_{X^n,Y^n,\bar{X}^n}(x^n,y^n,\bar{x}^n)=P_{X^n}(x^n)P_{Y^n|X^n}(y^n|x^n)P_{X^n}(\bar{x}^n).\]</span></p>
+<p>Using the observation above and the notation just introduced, we can rewrite our bound as</p>
+<p><span class="math display">\[\epsilon \leq \mathbb{E}_{C_1,Y^n}\left[\min\left\{1, (M-1)\mathrm{Pr}\left[    P_{Y^n|X^n}(Y^n|\bar{X}^n)\geq P_{Y^n|X^n}(Y^n|X^n)| X^n,Y^n  \right]\right\}\right]. \label{eq:RCU}\]</span></p>
+<p>This is precisely the RCU bound proposed in [^1] .</p>
+<p>Unfortunately, this bound is difficult to compute for the bi-AWGN channel. Indeed, no closed-form expression for the probability term in the bound is available. And a naïve Monte-Carlo approach to compute this term is unfeasible (although more sophisticated saddle-point approximation methods could be adopted instead). To see why, assume that <span class="math inline">\(k=100\)</span>. Then, to compute the RCU bound, we would need to evaluate tail probabilities as small as <span class="math inline">\(2^{-100}\approx 10^{-30}\)</span>.</p>
+<p>One way to avoid this is to upper-bound the probability term using generalized Markov inequality. This inequality says that for every nonnegative random variable <span class="math inline">\(T\)</span> and for every nonnegative <span class="math inline">\(s\)</span>,</p>
+<p><span class="math display">\[ \mathrm{Pr}[T&gt;\gamma]\leq \frac{\mathbb{E}[T^s]}{\gamma^s}.\]</span></p>
+<p>Applying this inequality to the probability term in the RCU bound, for fixed <span class="math inline">\(X^n=x^n\)</span> and <span class="math inline">\(Y^n=y^n\)</span>, we obtain</p>
+<p><span class="math display">\[\mathrm{Pr}\left[  P_{Y^n|X^n}(y^n|\bar{X}^n)\geq P_{Y^n|X^n}(y^n|x^n)\right]\leq \frac{\mathbb{E}\left[ P_{Y^n|X^n}^s(y^n|\bar{X}^n) \right]}{P^s_{Y^n|X^n}(y^n|x^n)}=e^{-\imath_s(x^n,y^n)}.\]</span></p>
+<p>Substituting this inequality into the RCU bound , we obtain the desired RCUs bound after algebraic manipulations.</p>
+</div>
+<div id="evaluation-of-the-rcus-for-the-bi-awgn-channel" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Evaluation of the RCUs for the bi-AWGN channel</h3>
+<p>To evaluate the RCUs bound for the bi-AWGN we just need to note that</p>
+<p><span class="math display">\[\imath_s(x^n,y^n)= n\log 2 - \sum_{j=1}^n \log\left(1+e^{-2sx_jy_j\sqrt{\rho}}\right)\]</span></p>
+<p>Few lines of matlab code suffice (author: <a href="https://www.chalmers.se/en/staff/Pages/johanos.aspx">Johan Östman</a>, Chalmers).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode matlab"><code class="sourceCode matlab"><span id="cb2-1"><a href="intro.html#cb2-1"></a>function Pe = rcus_biawgn_fixed_s(R,n,rho,s,num_samples)</span>
+<span id="cb2-2"><a href="intro.html#cb2-2"></a><span class="co">%this function computes rcus for given s</span></span>
+<span id="cb2-3"><a href="intro.html#cb2-3"></a>i_s = info_dens_biawgn(n,rho,s,num_samples);</span>
+<span id="cb2-4"><a href="intro.html#cb2-4"></a>Pe = mean( exp( - max(<span class="fl">0</span>, i_s - log(<span class="fl">2</span>^(n*R)-<span class="fl">1</span>) ) ));</span>
+<span id="cb2-5"><a href="intro.html#cb2-5"></a>end</span>
+<span id="cb2-6"><a href="intro.html#cb2-6"></a></span>
+<span id="cb2-7"><a href="intro.html#cb2-7"></a></span>
+<span id="cb2-8"><a href="intro.html#cb2-8"></a>function i_s = info_dens_biawgn(n,rho,s,num_samples)</span>
+<span id="cb2-9"><a href="intro.html#cb2-9"></a>S = [-sqrt(rho), sqrt(rho)]; <span class="co">%constellation</span></span>
+<span id="cb2-10"><a href="intro.html#cb2-10"></a>W = randn(num_samples, n); <span class="co">%create awgn noise</span></span>
+<span id="cb2-11"><a href="intro.html#cb2-11"></a>X = S(randi([<span class="fl">1</span>,<span class="fl">2</span>], num_samples, n)); <span class="co">%sample uniformly from constellation</span></span>
+<span id="cb2-12"><a href="intro.html#cb2-12"></a>Y = X+W; <span class="co">% add noise</span></span>
+<span id="cb2-13"><a href="intro.html#cb2-13"></a>i_s = sum(log(<span class="fl">2</span>) - (s/<span class="fl">2</span>)*(Y-X).^<span class="fl">2</span> - log(exp(-(s/<span class="fl">2</span>)*(Y-S(<span class="fl">1</span>)).^<span class="fl">2</span>) + exp(-(s/<span class="fl">2</span>)*(Y-S(<span class="fl">2</span>)).^<span class="fl">2</span>)),<span class="fl">2</span>); <span class="co">%compute information density samples</span></span>
+<span id="cb2-14"><a href="intro.html#cb2-14"></a>end</span></code></pre></div>
+</div>
+</div>
+<div id="a-converse-bound" class="section level2">
+<h2><span class="header-section-number">2.4</span> A converse bound</h2>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-polyanskiy10-05a">
+<p>Polyanskiy, Y., H. V. Poor, and S. Verdú. 2010. “Channel Coding Rate in the Finite Blocklength Regime.” <em>IEEE Trans. Inf. Theory</em> 56 (5): 2307–59.</p>
+</div>
+<div id="ref-shannon48-07a">
+<p>Shannon, Claude E. 1948. “A Mathematical Theory of Communication.” <em>Bell Syst. Tech. J.</em> 27: 379–423 and 623–56.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["fbl-book.pdf", "fbl-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
