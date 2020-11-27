@@ -215,7 +215,7 @@ This decoder satisfies the error-probability constraint
 Indeed, even if we fix the decoding rule to, say, maximum likelihood, for a given choice of <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, one would in principle need to go through <span class="math inline">\(\binom{2^n}{2^k}\)</span> codes.
 So for example, if we have <span class="math inline">\(k=5\)</span> and <span class="math inline">\(n=10\)</span>, the number of codes is about <span class="math inline">\(5\times 10^{60}\)</span>.
 This means that even if we had a method to evaluate the error probability of a given code in <span class="math inline">\(1\)</span> ms, it would still take <span class="math inline">\(2\times 10^{50}\)</span> years to analyze all possible codes.</p>
-<p>Before exploring how and in which sense a characterization of the triplets <span class="math inline">\((k,n,\epsilon)\)</span> can be performed, let us first see what we can do by using the notion of channel capacity introduced by Shannon <span class="citation">[<a href="#ref-shannon48-07a" role="doc-biblioref">2</a>]</span> in his groundbreaking paper, which started the field of information theory.</p>
+<p>Before exploring how and in which sense a characterization of the triplets <span class="math inline">\((k,n,\epsilon)\)</span> can be performed, let us first see what we can do by using the notion of channel capacity introduced by Shannon <span class="citation">[<a href="#ref-shannon48-07a" role="doc-biblioref">1</a>]</span> in his groundbreaking paper, which started the field of information theory.</p>
 <p>Let us denote by <span class="math inline">\(k^\star(n,\epsilon)\)</span> the largest number of bits we can transmit using <span class="math inline">\(n\)</span> channel uses with error probability not exceeding <span class="math inline">\(\epsilon\)</span> and by <span class="math inline">\(R^\star(n,\epsilon)=(k^\star(n,\epsilon)/n)\log 2\)</span> the corresponding maximum coding rate, measured in nats per channel use.
 Throughout this set of notes, it will be convenient to consistently measure all rates in nats per channel use rather than in bits per channel use, since it will simplify the theoretical derivations.
 This is why we multiplied the ratio <span class="math inline">\(k^\star(n,\epsilon)/n\)</span> by <span class="math inline">\(\log 2\)</span>.
@@ -312,15 +312,15 @@ Both values are significantly smaller than the <span class="math inline">\(0.5\)
 <div id="the-random-coding-union-bound-with-parameter-s" class="section level3">
 <h3><span class="header-section-number">2.2.1</span> The random-coding union bound with parameter s</h3>
 <p>As already mentioned, achievability bounds in finite-blocklength information theory give us an upper bound on <span class="math inline">\(\epsilon^*(k,n)\)</span>, or equivalently, a lower bound on <span class="math inline">\(k^\star(n,\epsilon)\)</span>, and, hence on <span class="math inline">\(R^\star(k,n)\)</span> for a given SNR value.</p>
-<p>Many such bounds are available in the literature: some are based on threshold decoding, such as the dependence-testing bound <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span>. Some are based on hypothesis testing such as the <span class="math inline">\(\kappa\beta\)</span> bound <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span> and the <span class="math inline">\(\beta\beta\)</span> bound <span class="citation">[<a href="#ref-yang18-09a" role="doc-biblioref">3</a>]</span>.
-Here, we will review a variation of the random-coding union (RCU) bound in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span> introduced in <span class="citation">[<a href="#ref-martinez11-02a" role="doc-biblioref">4</a>]</span>, which is commonly referred to as RCU bound with parameter <span class="math inline">\(s\)</span> (RCUs).</p>
+<p>Many such bounds are available in the literature: some are based on threshold decoding, such as the dependence-testing bound <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span>. Some are based on hypothesis testing such as the <span class="math inline">\(\kappa\beta\)</span> bound <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span> and the <span class="math inline">\(\beta\beta\)</span> bound <span class="citation">[<a href="#ref-yang18-09a" role="doc-biblioref">3</a>]</span>.
+Here, we will review a variation of the random-coding union (RCU) bound in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span> introduced in <span class="citation">[<a href="#ref-martinez11-02a" role="doc-biblioref">4</a>]</span>, which is commonly referred to as RCU bound with parameter <span class="math inline">\(s\)</span> (RCUs).</p>
 <p>This bound is appealing because</p>
 <ul>
 <li>it is tight for a large range of error-probability values</li>
 <li>it is reasonably easy to evaluate numerically</li>
 <li>it lends itself to an easy generalization to arbitrary, mismatch decoding rules. This is important, because it enables its applications in many setups of practical relevance, including when one uses pilot symbols to estimate the channel in a fading environment, and nearest-neighbor detection based on the estimated CSI at the receiver.</li>
 </ul>
-<p>Like most achievability bounds in information theory, the RCUs bound relies on <em>random coding</em>, a technique introduced by Shannon <span class="citation">[<a href="#ref-shannon48-07a" role="doc-biblioref">2</a>]</span> to establish achievability results.
+<p>Like most achievability bounds in information theory, the RCUs bound relies on <em>random coding</em>, a technique introduced by Shannon <span class="citation">[<a href="#ref-shannon48-07a" role="doc-biblioref">1</a>]</span> to establish achievability results.
 The idea is as follows: rather than analyzing the performance of a given code, one analyzes the average performance of a random ensemble of codes, whose codewords are drawn independently from a given distribution. Then, one shows that the average error probability, averaged over this ensemble is upper-bound by a suitable, easy-to-evaluate function of <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>. Finally, one concludes that there must exist at least a code in the ensemble whose error probability is upper-bounded by that function.</p>
 <p>We will state for future uses the RCUs bound in a more general setup than the bi-AWGN channel. Specifically, let us denote by <span class="math inline">\(P_{Y^n | X^n}\)</span> a general channel law that describes in probabilistic terms the input-output relation corresponding to the transmission of a block of <span class="math inline">\(n\)</span> symbols over a generic channel.
 For example, in the bi-AWGN case, we have</p>
@@ -329,11 +329,11 @@ For example, in the bi-AWGN case, we have</p>
 <p>We are now ready to state the RCUs bound.</p>
 
 <div class="theorem">
-<p><span id="thm:rcus" class="theorem"><strong>Theorem 2.1  (RCUs bound)  </strong></span>Fix an <span class="math inline">\(s&gt;0\)</span> and an input distribution <span class="math inline">\(P_{X^n}\)</span>. Then for every <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, there exists a <span class="math inline">\((k,n,\epsilon)\)</span>-code whose error probability is upper-bounded as
+<span id="thm:rcus" class="theorem"><strong>Theorem 2.1  (RCUs bound)  </strong></span>Fix an <span class="math inline">\(s&gt;0\)</span> and an input distribution <span class="math inline">\(P_{X^n}\)</span>. Then for every <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span>, there exists a <span class="math inline">\((k,n,\epsilon)\)</span>-code whose error probability is upper-bounded as
 <span class="math display" id="eq:rcus-bound">\[\begin{equation}
   \epsilon \leq \mathbb{E}\left[ \exp\left[-\max\left\{0, \imath_s(X^n,Y^n)-\log(2^k-1) \right\} \right] \right].
   \tag{2.7}
-\end{equation}\]</span></p>
+\end{equation}\]</span>
 Here, <span class="math inline">\((X^n,Y^n)\)</span> is distributed as <span class="math inline">\(P_{X^n}P_{Y^n | X^n}\)</span> and <span class="math inline">\(\imath_s(x^n,y^n)\)</span> is the generalized information density, which is defined as
 <span class="math display" id="eq:generalized-info-dens">\[\begin{equation}
   \imath_s(x^n,y^n)=\log \frac{P^s_{Y^n | X^n} (y^n | x^n)}{\mathbb{E}\left[P^s_{Y^n | X^n}(y^n | \bar{X}^n)\right]}
@@ -363,7 +363,7 @@ Using the observation above and the notation just introduced, we can rewrite our
 <p><span class="math display" id="eq:RCU">\[\begin{equation}
 \epsilon \leq \mathbb{E}_{X^n,Y^n}\left[\min\left\{1, (M-1)\mathbb{P}\left[    P_{Y^n|X^n}(Y^n|\bar{X}^n)\geq P_{Y^n|X^n}(Y^n|X^n)| X^n,Y^n  \right]\right\}\right]. \tag{2.9}
 \end{equation}\]</span>
-This is precisely the RCU bound proposed in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span> .</p>
+This is precisely the RCU bound proposed in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span> .</p>
 <p>Unfortunately, this bound is difficult to compute for the bi-AWGN channel. Indeed, no closed-form expression for the probability term in the bound is available. And a naïve Monte-Carlo approach to compute this term is unfeasible (although more sophisticated saddle-point approximation methods could be adopted instead <span class="citation">[<a href="#ref-font-segura18-03a" role="doc-biblioref">6</a>]</span>—we will review then in a later chapter). To see why, assume that <span class="math inline">\(k=100\)</span> so that <span class="math inline">\(M=2^k=2^{100}\)</span>. Then, to compute the RCU bound, we would need to evaluate numerically tail probabilities as small as <span class="math inline">\(2^{-100}\approx 10^{-30}\)</span>.</p>
 <p>One way to avoid this is to upper-bound the probability term using the generalized Markov inequality.
 This inequality states that for every nonnegative random variable <span class="math inline">\(T\)</span> and for every positive <span class="math inline">\(s\)</span>,</p>
@@ -404,7 +404,7 @@ Substituting this inequality into the RCU bound <a href="bi-awgn.html#eq:RCU">(2
 <h2><span class="header-section-number">2.3</span> A converse bound</h2>
 <p>Converse bounds in information theory express an impossibility condition. In our case, a converse result says that no <span class="math inline">\((k,n,\epsilon)\)</span>-code can be found for which the triplets <span class="math inline">\((k,n,\epsilon)\)</span> violate a certain relation.
 Converse bounds give a lower bound on the error probability <span class="math inline">\(\epsilon^\star(k,n)\)</span>, or equivalently, an upper bound on <span class="math inline">\(k^\star(n,\epsilon)\)</span> and, hence, on <span class="math inline">\(R^\star(k,n)\)</span>.</p>
-<p>We will review in this section a very general technique to obtain converse bounds in finite-blocklength information theory, which relies on the so-called <em>metaconverse theorem</em> <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span>.</p>
+<p>We will review in this section a very general technique to obtain converse bounds in finite-blocklength information theory, which relies on the so-called <em>metaconverse theorem</em> <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span>.</p>
 <div id="binary-hypothesis-testing" class="section level3">
 <h3><span class="header-section-number">2.3.1</span> Binary hypothesis testing</h3>
 <p>Before introducing the metaconverse theorem, we need to review some basic concepts in binary hypothesis testing.</p>
@@ -445,7 +445,7 @@ Here, we assumed for simplicity that <span class="math inline">\(X^n\)</span> is
 </div>
 <div id="the-metaconverse-bound" class="section level3">
 <h3><span class="header-section-number">2.3.2</span> The metaconverse bound</h3>
-<p>We are now ready to state our converse bound, which we shall refer to as <strong>metaconverse theorem</strong> although this term is used in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span> for a slightly more general result. As for the RCUs bound in Theorem <a href="bi-awgn.html#thm:rcus">2.1</a>, we will first state and prove the bound for a general channel <span class="math inline">\(P_{Y^n|X^n}\)</span>.
+<p>We are now ready to state our converse bound, which we shall refer to as <strong>metaconverse theorem</strong> although this term is used in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span> for a slightly more general result. As for the RCUs bound in Theorem <a href="bi-awgn.html#thm:rcus">2.1</a>, we will first state and prove the bound for a general channel <span class="math inline">\(P_{Y^n|X^n}\)</span>.
 Then, we will particularize it to the bi-AWGN channel.</p>
 
 <div class="theorem">
@@ -498,7 +498,7 @@ The key observation now is that because of symmetry, for every binary channel in
   \beta_{1-\epsilon}(P_{Y^n | X^n=x^n}, Q_{Y^n} )= \beta_{1-\epsilon}(P_{Y^n | X^n=\bar{x}^n}, Q_{Y^n} ) 
   \tag{2.14}
 \end{equation}\]</span></p>
-<p>where <span class="math inline">\(\bar{x}^n\)</span> is the all-one vector. One can then show (see Lemma 29 in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">1</a>]</span>) that when <a href="bi-awgn.html#eq:symmetry">(2.14)</a> holds, then</p>
+<p>where <span class="math inline">\(\bar{x}^n\)</span> is the all-one vector. One can then show (see Lemma 29 in <span class="citation">[<a href="#ref-polyanskiy10-05a" role="doc-biblioref">2</a>]</span>) that when <a href="bi-awgn.html#eq:symmetry">(2.14)</a> holds, then</p>
 <p><span class="math display">\[\beta_{1-\epsilon}(P_{X^n}P_{Y^n|X^n},P_{X^n}Q_{Y^n})= \beta_{1-\epsilon}(P_{Y^n | X^n=\bar{x}^n}, Q_{Y^n} )\]</span></p>
 <p>Note that the right-hand side of this equality does not depend on <span class="math inline">\(P_{X^n}\)</span>.
 Hence, for this (generally suboptimal) choice of <span class="math inline">\(Q_{Y^n}\)</span>, the metaconverse bound simplifies to</p>
@@ -629,7 +629,7 @@ Then we will prove that the asymptotic expansions of the achievability bound in 
 The theorem is stated below for completeness.</p>
 
 <div class="theorem">
-<p><span id="thm:berryesseen" class="theorem"><strong>Theorem 2.4  (Berry-Esseen)  </strong></span>Let <span class="math inline">\(Z_j\)</span>, <span class="math inline">\(j=1,\dots,n\)</span>, be independent random variables with mean <span class="math inline">\(\mu_j = \mathbb{E}[Z_j]\)</span>, variance <span class="math inline">\(\sigma_j^2 = \mathrm{Var}[Z_j]\)</span>, and third absolute central moment <span class="math inline">\(\theta_j = \mathbb{E}[|Z_j-\mu_j|^3]\)</span>.</p>
+<span id="thm:berryesseen" class="theorem"><strong>Theorem 2.4  (Berry-Esseen)  </strong></span>Let <span class="math inline">\(Z_j\)</span>, <span class="math inline">\(j=1,\dots,n\)</span>, be independent random variables with mean <span class="math inline">\(\mu_j = \mathbb{E}[Z_j]\)</span>, variance <span class="math inline">\(\sigma_j^2 = \mathrm{Var}[Z_j]\)</span>, and third absolute central moment <span class="math inline">\(\theta_j = \mathbb{E}[|Z_j-\mu_j|^3]\)</span>.
 Then, for every <span class="math inline">\(t \in\mathbb{R}\)</span>,
 <span class="math display">\[ \left|\mathbb{P}\left[\frac{\sum_{j=1}^{n}\left(Z_j-\mu_j\right)}{\sqrt{\sum_{j=1}^{n}\sigma_j^2}} \geq t \right]-Q(t)\right| \leq \frac{6\sum_{j=1}^{n}\theta_j}{\left(\sum_{j=1}^{n}\sigma_j^2\right)^{3/2}}.  \]</span>
 </div>
@@ -714,7 +714,7 @@ We shall refer to the corresponding normal approximation
 as <strong>refined normal</strong> approximation.</p>
 <p>Note that this approximation can be equivalently stated in terms of minimum error probability <span class="math inline">\(\epsilon^*(R,n)\)</span>:</p>
 <p><span class="math display" id="eq:refined-normal-approx-error">\[\begin{equation}
-  \epsilon^*(R,n)\approx Q\left( \frac{C-R +(\log n)/(2n)}{\sqrt{V/n}}\right)
+  \epsilon^*(R,n)\approx Q\left( \frac{C-R +(\log n)/(2n)}{\sqrt{V/n}}\right).
   \tag{2.27}
 \end{equation}\]</span>
 Please note that the rate <span class="math inline">\(R\)</span> in <a href="bi-awgn.html#eq:refined-normal-approx-error">(2.27)</a> is measured in nats per channel use and not in bits per channel use.</p>
@@ -784,11 +784,11 @@ On the contrary, modern short codes have better performance, which is again expe
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-polyanskiy10-05a">
-<p>[1] Y. Polyanskiy, H. V. Poor, and S. Verdú, “Channel coding rate in the finite blocklength regime,” <em>IEEE Trans. Inf. Theory</em>, vol. 56, no. 5, pp. 2307–2359, May 2010.</p>
-</div>
 <div id="ref-shannon48-07a">
-<p>[2] C. E. Shannon, “A mathematical theory of communication,” <em>Bell Syst. Tech. J.</em>, vol. 27, pp. 379–423 and 623–656, 1948.</p>
+<p>[1] C. E. Shannon, “A mathematical theory of communication,” <em>Bell Syst. Tech. J.</em>, vol. 27, pp. 379–423 and 623–656, 1948.</p>
+</div>
+<div id="ref-polyanskiy10-05a">
+<p>[2] Y. Polyanskiy, H. V. Poor, and S. Verdú, “Channel coding rate in the finite blocklength regime,” <em>IEEE Trans. Inf. Theory</em>, vol. 56, no. 5, pp. 2307–2359, May 2010.</p>
 </div>
 <div id="ref-yang18-09a">
 <p>[3] W. Yang, A. Collins, G. Durisi, Y. Polyanskiy, and H. V. Poor, “Beta-beta bounds: Finite-blocklength analog of the golden formula,” <em>IEEE Trans. Inf. Theory</em>, vol. 64, no. 9, pp. 6236–6256, Sep. 2018.</p>
