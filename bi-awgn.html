@@ -24,7 +24,7 @@
 <meta name="author" content="Giuseppe Durisi and Alejandro Lancho" />
 
 
-<meta name="date" content="2020-11-30" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -242,7 +242,7 @@ We will show later in this set of notes why this is indeed the case and for whic
 </ul>
 <p>One way to explain the relation between capacity and finite-blocklength metrics is through the following figure, which artistically illustrates <span class="math inline">\(\epsilon^\star(n,R)\)</span> as a function for <span class="math inline">\(R\)</span> for various values of <span class="math inline">\(n\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fblintro"></span>
-<img src="images/fbl_intro/fbl_intro.png" alt="Error probability as a function of the rate" width="70%" />
+<img src="images/Section3/figure3_1/fbl_intro.png" alt="Error probability as a function of the rate" width="70%" />
 <p class="caption">
 Figure 3.1: Error probability as a function of the rate
 </p>
@@ -295,7 +295,7 @@ As we shall see, finite-blocklength information theory will give us a much more 
 <p>Let us go back to the tradeoff between <span class="math inline">\(\epsilon\)</span> and <span class="math inline">\(R\)</span> depicted artistically in Fig. <a href="bi-awgn.html#fig:fblintro">3.1</a>.
 In Fig. <a href="bi-awgn.html#fig:fblawgnevr">3.2</a> below, we show how finite-blocklength information theory can be used to provide a very accurate quantitative characterization of this trade-off for a fixed blocklength <span class="math inline">\(n\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:fblawgnevr"></span>
-<img src="images/eps_vs_rate/eps_vs_rate.png" alt="Finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the rate $R$ measured in bits per channel use for different values of the blocklength $n$" width="70%" />
+<img src="images/Section3/figure3_2/eps_vs_rate.png" alt="Finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the rate $R$ measured in bits per channel use for different values of the blocklength $n$" width="70%" />
 <p class="caption">
 Figure 3.2: Finite-blocklength upper and lower bounds on <span class="math inline">\(\epsilon^*(n,R)\)</span> as a function of the rate <span class="math inline">\(R\)</span> measured in bits per channel use for different values of the blocklength <span class="math inline">\(n\)</span>
 </p>
@@ -415,14 +415,14 @@ Converse bounds give a lower bound on the error probability <span class="math in
 <p>Binary hypothesis testing deals with the following problem (see figure below). We observe a vector <span class="math inline">\(X^n\)</span> which may have been generated according to a distribution <span class="math inline">\(P_{X^n}\)</span> or according to an alternative distribution <span class="math inline">\(Q_{X^n}\)</span>. Our task is to decide which of the two distributions generated <span class="math inline">\(X^n\)</span>.</p>
 <p>To do so, we design a test <span class="math inline">\(Z\)</span> whose input is the vector <span class="math inline">\(X^n\)</span> and whose output is a binary value <span class="math inline">\(\{0,1\}\)</span>. We use the convention that <span class="math inline">\(0\)</span> indicates that the test chooses <span class="math inline">\(P_{X^n}\)</span> and <span class="math inline">\(1\)</span> indicates that the test chooses <span class="math inline">\(Q_{X^n}\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:binhyptest"></span>
-<img src="images/hypothesis-testing.png" alt="Binary hypothesis testing" width="70%" />
+<img src="images/Section3/hypothesis-testing.png" alt="Binary hypothesis testing" width="70%" />
 <p class="caption">
 Figure 3.3: Binary hypothesis testing
 </p>
 </div>
 <p>We can think of the test <span class="math inline">\(Z\)</span> as a binary partition of the set of the vectors <span class="math inline">\(X^n\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:binary-partition"></span>
-<img src="images/neyman_pearson.png" alt="Binary hypothesis testing as a binary partition" width="40%" />
+<img src="images/Section3/neyman_pearson.png" alt="Binary hypothesis testing as a binary partition" width="40%" />
 <p class="caption">
 Figure 3.4: Binary hypothesis testing as a binary partition
 </p>
@@ -553,7 +553,7 @@ It then follows from <a href="bi-awgn.html#eq:verdu-han">(3.16)</a> and from our
 <h2><span class="header-section-number">3.4</span> A numerical example</h2>
 <p>In Figure <a href="bi-awgn.html#fig:epsvssnr">3.5</a> below we depict the upper and lower bound on <span class="math inline">\(\epsilon^*(n,R)\)</span> resulting by using the RCUs bound <a href="bi-awgn.html#eq:rcus-bound">(3.7)</a> (optimized over the parameter <span class="math inline">\(s\)</span>) and the Verdú-Han relaxation of the metaconverse bound <a href="bi-awgn.html#eq:vh-bound-bi-awgn">(3.17)</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:epsvssnr"></span>
-<img src="images/Section2/figure2_5/snr_vs_eps.png" alt="Finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the SNR (dB) for $R=1/2$ bit/channel use and $n=128$" width="70%" />
+<img src="images/Section3/figure3_5/snr_vs_eps.png" alt="Finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the SNR (dB) for $R=1/2$ bit/channel use and $n=128$" width="70%" />
 <p class="caption">
 Figure 3.5: Finite-blocklength upper and lower bounds on <span class="math inline">\(\epsilon^*(n,R)\)</span> as a function of the SNR (dB) for <span class="math inline">\(R=1/2\)</span> bit/channel use and <span class="math inline">\(n=128\)</span>
 </p>
@@ -727,7 +727,7 @@ Please note that the rate <span class="math inline">\(R\)</span> in <a href="bi-
 As shown in the figure, the normal approximation is fairly accurate over all range of SNR values considered in the figure.
 The refined normal approximation is even more accurate and lies between the tightest achievability and converse bounds available for this setup.</p>
 <div class="figure" style="text-align: center"><span id="fig:nasnrvseps"></span>
-<img src="images/Section2/figure2_6/snr_vs_eps_NA.png" alt="Normal approximation vs. finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the SNR (dB) for $R=1/2$ bits per channel use and $n=128$." width="70%" />
+<img src="images/Section3/figure3_6/snr_vs_eps_NA.png" alt="Normal approximation vs. finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the SNR (dB) for $R=1/2$ bits per channel use and $n=128$." width="70%" />
 <p class="caption">
 Figure 3.6: Normal approximation vs. finite-blocklength upper and lower bounds on <span class="math inline">\(\epsilon^*(n,R)\)</span> as a function of the SNR (dB) for <span class="math inline">\(R=1/2\)</span> bits per channel use and <span class="math inline">\(n=128\)</span>.
 </p>
@@ -742,7 +742,7 @@ This may occur if <span class="math inline">\(R\ll C\)</span> in which case the 
 It may also occur when <span class="math inline">\(n\)</span> is small.
 We illustrate this issue in Figure <a href="bi-awgn.html#fig:nafblawgnevr">3.7</a> below.</p>
 <div class="figure" style="text-align: center"><span id="fig:nafblawgnevr"></span>
-<img src="images/eps_vs_rate/eps_vs_rate_withNA.png" alt="Normal approximation vs finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the rate $R$ for different values of the blocklength $n$" width="70%" />
+<img src="images/Section3/figure3_7/eps_vs_rate_withNA.png" alt="Normal approximation vs finite-blocklength upper and lower bounds on $\epsilon^*(n,R)$ as a function of the rate $R$ for different values of the blocklength $n$" width="70%" />
 <p class="caption">
 Figure 3.7: Normal approximation vs finite-blocklength upper and lower bounds on <span class="math inline">\(\epsilon^*(n,R)\)</span> as a function of the rate <span class="math inline">\(R\)</span> for different values of the blocklength <span class="math inline">\(n\)</span>
 </p>
@@ -761,7 +761,7 @@ This questions has been analyzed in many recent papers in the literature.
 Here, we present some of the results reported in <span class="citation">[<a href="#ref-coskun19-03a" role="doc-biblioref">11</a>]</span>.
 Please consult this reference for more details about the families of codes discussed here as well as for additional results pertaining some of the codes selected in 5G.</p>
 <div class="figure" style="text-align: center"><span id="fig:codes64-128"></span>
-<img src="images/Section2/figure2_8-2_9/case64.png" alt="Error probability vs. SNR in dB for selected families of channel codes. In the figure, $k=64$ and $n=128$" width="100%" />
+<img src="images/Section3/figure3_8-3_9/case64.png" alt="Error probability vs. SNR in dB for selected families of channel codes. In the figure, $k=64$ and $n=128$" width="100%" />
 <p class="caption">
 Figure 3.8: Error probability vs. SNR in dB for selected families of channel codes. In the figure, <span class="math inline">\(k=64\)</span> and <span class="math inline">\(n=128\)</span>
 </p>
@@ -774,7 +774,7 @@ as well as the ones of an accumulate-repeat-accumulate (ARA) LDPC code, and a tu
 As shown in the figure, better performance (at the cost of an increased decoding complexity) can be obtained with a nonbinary LDPC code over <span class="math inline">\(\mathbb{F}_{256}\)</span>.
 Finally, one can achieve performance similar to the ones of TBCCs by using a polar code with successive-cancellation list-decoding (with list size <span class="math inline">\(L=32\)</span>) combined with an outer CRC code of length <span class="math inline">\(7\)</span>.</p>
 <div class="figure" style="text-align: center"><span id="fig:codes256-512"></span>
-<img src="images/Section2/figure2_8-2_9/case256.png" alt="Error probability vs. SNR in dB for selected families of channel codes. In the figure, $k=256$ and $n=512$" width="100%" />
+<img src="images/Section3/figure3_8-3_9/case256.png" alt="Error probability vs. SNR in dB for selected families of channel codes. In the figure, $k=256$ and $n=512$" width="100%" />
 <p class="caption">
 Figure 3.9: Error probability vs. SNR in dB for selected families of channel codes. In the figure, <span class="math inline">\(k=256\)</span> and <span class="math inline">\(n=512\)</span>
 </p>
