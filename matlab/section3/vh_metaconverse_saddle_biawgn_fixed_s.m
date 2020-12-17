@@ -13,7 +13,7 @@ function Pe = vh_metaconverse_saddle_biawgn_fixed_s(R_vec,n,snr,s)
 % OUTPUT:
 % Pe = Error probability obtained as a result of the computation of the bound
 N   = 500;
-tau = linspace(0,4,N);
+tau = linspace(-1,4,N);
 Pe  = nan(size(R_vec));
 psi = zeros(size(tau)); psi1 = psi; psi2 = psi;
 
@@ -41,7 +41,7 @@ end
 
 for ii=1:length(R_vec)
     R = R_vec(ii);
-    tail_est = exp(log(qfunc(tau.*sqrt(n*psi2))) + n*(psi-tau.*psi1+0.5*tau.^2.*psi2));
+    tail_est = double(tau<0) + sign(tau).*exp(log(qfunc(abs(tau).*sqrt(n*psi2))) + n*(psi-tau.*psi1+0.5*tau.^2.*psi2));
     Pe(ii) = max(0,max(tail_est - exp(n*(J_s-psi1/s-R))));
 end
 

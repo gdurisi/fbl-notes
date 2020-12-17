@@ -4,7 +4,7 @@
 DEBUG = 1;
 
 % System parameters:
-snr_db_vec  = 1:0.25:5;
+snr_db_vec  = -1:0.25:5;
 snr_vec     = 10.^(snr_db_vec/10);
 R_bits      = 1/2;
 R           = R_bits*log(2);
@@ -46,7 +46,7 @@ if DEBUG == 1
     plot(snr_db_vec,eps_saddle_rcu,'c')
     plot(snr_db_vec,eps_saddle_mc,'m')
     ylim([1e-8 1])
-    legend('RCUs saddle','RCU saddle','Verdu-Han saddle','metaconverse saddle')
+    legend('normal approxx','ref. normal approx.','RCU saddle','metaconverse saddle')
 else
     %% Save Files
     fileName_NA = ['NA_eps_vs_SNR_n' num2str(n) '_R' num2str(R_bits) '.txt'];

@@ -12,9 +12,14 @@ function epsilon = metaconverse_saddle_biawgn_opt_s(snr,R_vec,n)
 %
 % OUTPUT:
 % epsilon    = Error probability obtained as a result of the computation of the bound
+%
+% IMPORTANT NOTE: The accuracy of the saddlepoint approximation depends on
+% the right choice of the parameter rho. If non-sense values are obtained
+% after evaluation, consider to increase the upper limit of the variable
+% rhorange. 
 
 Zmax = 10; % determines support for numerical integration routines
-rhorange = 0:0.01:1.5; % range of values to optimize the bound over; a good starting point is [0:0.02:1.5]
+rhorange = -0.9:0.01:6; % range of values to optimize the bound over; note that this might need to be adjusted depending on the target snr, R, and n.
 
 epsilon=-Inf*ones(size(R_vec));
 rho_optimal=-1*ones(size(R_vec));
@@ -27,10 +32,10 @@ for ii=1:length(R_vec)
         
         V=K2/(1+rho)^2;
         
-        etan=0.5*(erfcx(sqrt(n*V/2))+erfcx(sqrt(n*rho^2*V/2)));
+        etan=0.5*(erfcx(sqrt(n*V/2))+sign(rho)*erfcx(sqrt(n*rho^2*V/2)));
         
         E1=(E0+K1)/(1+rho);
-        epsilon_current=(etan-exp(-n*(R-E1)))*exp(-n*(E0-rho*E1));
+        epsilon_current= double(rho<0)+(etan-exp(-n*(R-E1)))*exp(-n*(E0-rho*E1));
         
         if (epsilon_current>epsilon(ii))
             epsilon(ii)=epsilon_current;

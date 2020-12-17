@@ -21,19 +21,21 @@ epsilon = ones(size(R_vec));
 Rcritical=E0prime(snr,1,1/2,Zmax);
 Capacity=E0prime(snr,0,1,Zmax);
 
-rho_vec = linspace(0,4,1000);
+rho_vec = linspace(-0.9,4,1000);
 s_vec=1./(1+rho_vec);
 E0prime_vec = nan(size(rho_vec));
 for ii=1:length(rho_vec)
     E0prime_vec(ii) = E0prime(snr,rho_vec(ii),s_vec(ii),Zmax);
 end
-
+rem_idx = find(isnan(E0prime_vec));
+E0prime_vec(rem_idx) = [];
+rho_vec(rem_idx) = [];
 for ii = 1:length(R_vec)
     R = R_vec(ii);
     rho_current(ii) = interp1(E0prime_vec,rho_vec,R);
     if (R>Capacity)
-        disp(['The rate R=' num2str(R) 'for n=' num2str(n) ' is above capacity. I will set epsilon=1!'])
-        epsilon(ii)=1;
+        [~,epsilon(ii)] = rcu_fixed(snr,n,Zmax,rho_current(ii));
+        epsilon(ii) = 1 + epsilon(ii);
     elseif (R<Rcritical)
         %disp(['The rate R=' num2str(R) ' is below the critical rate. I will set epsilon=1!'])
         %[rho_current(ii),~]=search_rho(snr,Zmax,R); % Obtain the rho satisfying the stationary equation

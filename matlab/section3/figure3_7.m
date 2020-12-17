@@ -6,9 +6,9 @@ DEBUG = 1;
 
 snr_db  = 0.189;
 snr     = 10^(snr_db/10);
-R_bits  = linspace(0.1,0.5,50);
+R_bits  = [linspace(0.1,0.5,50) linspace(0.51,0.7,10)];
 R       = R_bits*log(2);
-epsilon = logspace(-9,-0.3010,50);
+epsilon = logspace(-9,0,50);
 n_vec   = [128 256 512 1024 1e4];
 
 for ii = 1:length(n_vec)
@@ -37,10 +37,10 @@ for ii = 1:length(n_vec)
     else
         fileName_NA = ['NA_n' num2str(n) '_snrdB' num2str(snr_db) '.txt'];
         fileName_RCU = ['RCU_n' num2str(n) '_snrdB' num2str(snr_db) '.txt'];
-        fileName_MC = ['Metaconverse_n' num2str(n) '_snrdB' num2str(snr_db) '.txt'];
-        T_NA = table(R', eps_NA_refined');
-        T_RCU = table(R', eps_saddle_rcu');
-        T_MC = table(R', eps_saddle_mc');
+        fileName_MC = ['metaconv_n' num2str(n) '_snrdB' num2str(snr_db) '.txt'];
+        T_NA = table(R_bits', eps_NA_refined');
+        T_RCU = table(R_bits', eps_saddle_rcu');
+        T_MC = table(R_bits', eps_saddle_mc');
         writetable(T_NA, fileName_NA, 'WriteVariableNames',false, 'Delimiter',  ' ')
         writetable(T_RCU, fileName_RCU, 'WriteVariableNames',false, 'Delimiter',  ' ')
         writetable(T_MC, fileName_MC, 'WriteVariableNames',false, 'Delimiter',  ' ')

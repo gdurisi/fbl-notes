@@ -55,7 +55,7 @@ for ii=1:length(R_vec)
         psiopt = psi_f(tauopt,integral(@(z)psi_int(z,tauopt),Zmin,Zmax));
         psi2opt = psi2_f(integral(@(z)psi_int(z,tauopt),Zmin,Zmax),integral(@(z)psi1_int(z,tauopt),Zmin,Zmax),integral(@(z)psi2_int(z,tauopt),Zmin,Zmax));
         Pe(ii) = 1 - exp(log(qfunc(-tauopt.*sqrt(n*psi2opt))) + n*(psiopt-tauopt.*(I_s-R)+0.5*tauopt.^2.*psi2opt))...
-                - exp(log(qfunc((1-tauopt).*sqrt(n*psi2opt))) + n*(psiopt-tauopt.*(I_s-R)+0.5*(1-tauopt).^2.*psi2opt));
+                + exp(log(qfunc((1-tauopt).*sqrt(n*psi2opt))) + n*(psiopt-tauopt.*(I_s-R)+0.5*(1-tauopt).^2.*psi2opt));
     else %Rcr < R < Is
         psiopt = psi_f(tauopt,integral(@(z)psi_int(z,tauopt),Zmin,Zmax));
         psi2opt = psi2_f(integral(@(z)psi_int(z,tauopt),Zmin,Zmax),integral(@(z)psi1_int(z,tauopt),Zmin,Zmax),integral(@(z)psi2_int(z,tauopt),Zmin,Zmax));

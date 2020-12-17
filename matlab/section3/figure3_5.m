@@ -4,7 +4,7 @@
 DEBUG = 1;
 
 % System parameters:
-snr_db_vec  = 1:0.25:5;
+snr_db_vec  = -1:0.25:5;
 snr_vec     = 10.^(snr_db_vec/10);
 R_bits      = 1/2;
 R           = R_bits*log(2);
